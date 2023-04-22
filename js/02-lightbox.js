@@ -9,8 +9,6 @@ const galleryLink = document.querySelector(".gallery__link");
 const stringGalleryItems = createGalleryItems(galleryItems);
 createGalleryList(stringGalleryItems);
 
-gallery.addEventListener("click", onGalleryItemClick);
-
 function createGalleryItems(galleryItems) {
   return galleryItems
     .map(({ description, original, preview }) => {
@@ -30,21 +28,7 @@ function createGalleryList(items) {
   gallery.innerHTML = items;
 }
 
-function onGalleryItemClick(event) {
-  cancelGalleryLinkClick(event);
-
-  if (event.target.nodeName !== "IMG") {
-    return;
-  }
-
-  let lightbox = new SimpleLightbox(".gallery a", {
-    captionsData: "alt",
-    captionDelay: 250,
-  });
-}
-
-function cancelGalleryLinkClick(event) {
-  event.preventDefault();
-}
-
-console.log(galleryItems);
+let lightbox = new SimpleLightbox(".gallery a", {
+  captionsData: "alt",
+  captionDelay: 250,
+});
